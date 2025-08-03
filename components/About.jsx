@@ -116,7 +116,7 @@ export default function About() {
     <div ref={sectionRef} className=" relative">
       {/* Decorative Top Curve */}
 
-      <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[7px] z-[70] left-0 w-full">
+      <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[9px] z-[70] left-0 w-full">
         <svg
           viewBox="0 0 1440 14"
           xmlns="http://www.w3.org/2000/svg"

@@ -175,7 +175,7 @@ export default function Reviews() {
   return (
     <div className="relative z-[50]" ref={containerRef}>
       {/* Divider */}
-      <div className="s absolute -top-[4px] sm:-top-[9px] md:-top-[10px]  z-[70] left-0 w-full">
+      <div className="s absolute -top-[4px] sm:-top-[9px] md:-top-[12px]  z-[70] left-0 w-full">
         <svg
           viewBox="0 0 1000 14"
           xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +259,7 @@ export default function Reviews() {
           <div style={styles.marqueeOuter}>
             <motion.div
               drag="x"
-              dragConstraints={{ left: -1000, right: 0 }}
+              dragConstraints={{ left: -1500, right: 0 }}
               style={{
                 ...styles.marqueeInner,
                 x: dragX1,
@@ -271,7 +271,13 @@ export default function Reviews() {
             >
               {row1.map((r, i) =>
                 r.isWriteCard ? (
-                  <WriteReviewCard key="write" />
+                  <div
+                    key="write"
+                    className="sm:ml-auto sm:mr-auto" // Center only on small screens
+                    style={{ flexShrink: 0 }}
+                  >
+                    <WriteReviewCard />
+                  </div>
                 ) : (
                   <ReviewCard key={`r1-${i}`} {...r} />
                 )
@@ -300,7 +306,6 @@ export default function Reviews() {
           </div>
         </div>
       </section>
-      
     </div>
   );
 }
@@ -357,7 +362,7 @@ const styles = {
     display: "flex",
     gap: 16,
     width: "auto",
-    alignItems: "stretch",
+    alignItems: "self-start",
     userSelect: "none",
     cursor: "grab",
   },

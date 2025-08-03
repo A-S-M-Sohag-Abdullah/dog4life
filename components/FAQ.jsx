@@ -179,14 +179,14 @@ export default function FaqPage() {
   return (
     <div className={`relative ${styles.faq}`}>
       {/* Decorative Top Curve */}
-      <Image
+     <Image
         src="/assets/bg/questions.svg"
         alt="Hero Background"
         width={20}
         height={20}
         className="absolute top-[20%] 2xl:left-[25%] left-[15%] size-40 xl:block hidden"
       />
-      <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[7px] z-[70] left-0 w-full">
+      <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[8px] z-[70] left-0 w-full">
         <svg
           viewBox="0 0 1440 14"
           xmlns="http://www.w3.org/2000/svg"

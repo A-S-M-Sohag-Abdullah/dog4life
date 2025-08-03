@@ -106,7 +106,14 @@ const Clinics = () => {
 
   return (
     <>
-      <div className="top-0 h-full text-black w-full left-0 overflow-hidden">
+      <div
+        className="top-0 h-full text-black w-full left-0 overflow-hidden"
+        style={{
+          backgroundImage: "url(/assets/bg/bghomepage.svg)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <canvas
           ref={canvasRef}
           className={`fixed top-0 left-0 w-full h-full z-40 pointer-events-none transition-opacity duration-700 ease-in-out ${

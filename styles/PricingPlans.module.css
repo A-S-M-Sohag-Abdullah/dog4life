@@ -178,6 +178,7 @@
     justify-content: flex-start;
     padding-left: 20px;
     padding-right: 30px;
+    scrollbar-width: none;
   }
   .plan{
     flex-shrink: 0;

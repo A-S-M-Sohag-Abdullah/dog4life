@@ -342,7 +342,7 @@ const NavBar = () => {
       {/* Trigger */}
       <div className="w-full flex items-center justify-center ">
         <div
-          className={`flex max-w-[755px] border bg-black px-10 py-3 rounded-full text-black w-full  xl:mb-0 mb-10 mt-4 ${
+          className={`flex max-w-[755px] border bg-black px-5 py-3 rounded-full text-black w-full  xl:mb-0 mb-10 mt-4 ${
             menuOpen ? "fixed top-0" : "relative"
           } z-[99999999] items-center justify-between gap-3 mx-5`}
         >
@@ -351,15 +351,13 @@ const NavBar = () => {
           </Link> */}
           <Link href="/" className="flex items-center gap-2">
             {/*     <img src={logo.src} className="w-12 h-12" alt="" /> */}
-            <span className="md:text-2xl sm:block sm:text-sm  text-xs font-bold text-white">
-              GRON'S DODGEBALL
-            </span>
+            <img src="https://i.ibb.co/Ps01MSvS/gronsdodgeball.png" alt="gronsdodgeball" className="w-64"/>
           </Link>
 
           {/* Help Dropdown */}
           <div className="relative group ms-auto">
             <button
-              className="flex items-center gap-1 px-4 py-2 rounded-full transition text-white font-semibold"
+              className="flex items-center gap-1 px-4 py-2 rounded-full transition text-[#F5E6D3] font-semibold"
               type="button"
               onClick={toggleDropdown}
             >
@@ -386,7 +384,7 @@ const NavBar = () => {
             </button>
 
             <div
-              className={`absolute top-6 right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 overflow-hidden transition-opacity duration-200 
+              className={`absolute top-6 right-0 mt-2 w-48 bg-black rounded-lg shadow-lg z-50 overflow-hidden transition-opacity duration-200 
           ${
             isDesktop
               ? "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
@@ -400,35 +398,35 @@ const NavBar = () => {
             >
               <a
                 href="mailto:hello@hello.com"
-                className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                className="block px-4 py-2 text-white hover:text-[#D5DF26]"
                 onClick={closeDropdown}
               >
                 Email Us
               </a>
               <Link
                 href="/#faq"
-                className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                className="block px-4 py-2 text-white hover:text-[#D5DF26]"
                 onClick={closeDropdown}
               >
                 FAQs
               </Link>
               <Link
                 href="/terms"
-                className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                className="block px-4 py-2 text-white hover:text-[#D5DF26]"
                 onClick={closeDropdown}
               >
                 Terms
               </Link>
               <Link
                 href="/rules"
-                className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                className="block px-4 py-2 text-white hover:text-[#D5DF26]"
                 onClick={closeDropdown}
               >
                 Rules
               </Link>
               <Link
                 href="/privacy"
-                className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                className="block px-4 py-2 text-white hover:text-[#D5DF26]"
                 onClick={closeDropdown}
               >
                 Privacy
@@ -437,7 +435,7 @@ const NavBar = () => {
           </div>
 
           <div
-            className="flex cursor-pointer items-center rounded-full gap-1 border border-white px-4 py-2 text-white font-semibold hover:text-white transition-colors duration-300"
+            className="flex cursor-pointer items-center rounded-full gap-1 border border-[#F5E6D3] px-4 py-2 text-[#F5E6D3] font-semibold hover:text-white transition-colors duration-300"
             onClick={menuOpen ? closeMenu : openMenu}
           >
             Menu
@@ -641,7 +639,7 @@ const NavBar = () => {
                                 closeMenu();
                               }
                             }}
-                            className=" hover:pl-6 transition-all duration-600 leading-none xl:text-[85px] sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit"
+                            className="text-5xl hover:pl-6 transition-all duration-600 leading-none xl:text-[85px] sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit"
                           >
                             {moreLink.label}
                             <div

@@ -188,7 +188,7 @@ const UpcomingSessions = () => {
           alt="Hero Background"
           width={20}
           height={20}
-          className="absolute top-[10%] left-[10%] size-40 xl:block hidden"
+          className="absolute top-[15%] left-[4%] size-40 xl:block hidden"
         />
       <p className={`${styles.subtitle}  relative z-50`}>
         Swipe or scroll through upcoming games
