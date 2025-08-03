@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets & Memberships – Simple Widget</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #E67E22;
+      --pill-bg: #ffffff;
+      --pill-hover: #f2f2f2;
+      --text: #000000;
+      --badge-bg: #d9f600;
+      --badge-text: #000000;
+      --font: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg);
+      font-family: var(--font);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      height: 100vh;
+      overflow: clip;
+    }
+
+    .wallet-widget {
+      width: 344px;
+      background: var(--bg);
+      border-radius: 28px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* ✨ aangepast van 12px naar 20px */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .pill {
+      background: var(--pill-bg);
+      border-radius: 999px;
+      padding: 14px 20px;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .pill:hover {
+      background: var(--pill-hover);
+      transform: translateY(-1px);
+    }
+
+    .pill .left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pill-title {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pill-sub {
+      font-weight: 400;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .badge {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      text-align: center;
+      min-width: 70px;
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      background: #c4e500;
+    }
+
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup-inner {
+      background: #fff;
+      padding: 20px 20px 16px;
+      border-radius: 20px;
+      width: calc(100% - 32px);
+      max-width: 280px;
+      font-family: var(--font);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .popup-inner input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+
+    .popup-inner button[type="submit"] {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup-inner button[type="submit"]:hover {
+      background: #c4e500;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      font-weight: bold;
+    }
+
+    .confirmation {
+      text-align: center;
+    }
+
+    .confirmation button {
+      margin-top: 12px;
+      background: var(--pill-bg);
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wallet-widget">
+    <div class="pill" onclick="window.open('https://scan.gronsdodgeball.nl/payment/form?payment_link=plink_1RNuWuKPJsqZGRQAFNGt76Oz', '_blank')">
+      <div class="left">
+        <div class="pill-title">DROP-IN DODGER</div>
+        <div class="pill-sub">ONE SESSION</div>
+      </div>
+      <div class="badge">€12.5</div>
+    </div>
+
+    <div class="pill" onclick="window.open('https://scan.gronsdodgeball.nl/payment/form?payment_link=plink_1RN0fXKPJsqZGRQAMFyhLYnm', '_blank')">
+      <div class="left">
+        <div class="pill-title">WEEKLY WARRIOR</div>
+        <div class="pill-sub">PER MONTH</div>
+      </div>
+      <div class="badge">€40</div>
+    </div>
+
+    <div class="pill" onclick="showPopup()">
+      <div class="left">
+        <div class="pill-title">YOUTH S25/26</div>
+        <div class="pill-sub">PER YEAR</div>
+      </div>
+      <div class="badge">€335</div>
+    </div>
+
+    <div class="pill" onclick="window.open('https://gronsdodgeball.nl/funds', '_blank')">
+      <div class="left">
+        <div class="pill-title">FUNDS</div>
+        <div class="pill-sub">SUPPORT OPTIONS</div>
+      </div>
+      <div class="badge">MORE</div>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup-container" id="popup">
+    <div class="popup-inner" id="popupForm">
+      <button class="close-btn" onclick="closePopup()">✕</button>
+      <h3 style="margin-bottom:12px; text-align:center;">Join the Youth Queue</h3>
+      <form onsubmit="submitForm(event)">
+        <input type="text" id="name" name="name" placeholder="Name" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <input type="number" id="age" name="age" placeholder="Age" required />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+    <div class="popup-inner confirmation" id="confirmationMsg" style="display:none">
+      <h3>You're on the list!</h3>
+      <button onclick="addAnother()">Add another Dodger</button>
+    </div>
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('popupForm').style.display = 'block';
+      document.getElementById('confirmationMsg').style.display = 'none';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      fetch("https://formspree.io/f/mvgrjrzn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          age: document.getElementById("age").value,
+        })
+      }).then(res => {
+        if (res.ok) {
+          document.getElementById("popupForm").style.display = 'none';
+          document.getElementById("confirmationMsg").style.display = 'block';
+        } else {
+          alert("Error. Try again later.");
+        }
+      });
+    }
+
+    function addAnother() {
+      document.getElementById("confirmationMsg").style.display = 'none';
+      document.getElementById("popupForm").style.display = 'block';
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("age").value = "";
+    }
+
+    document.getElementById("popup").addEventListener("click", function (e) {
+      if (e.target === this) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>

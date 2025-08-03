@@ -1,0 +1,56 @@
+.aboutWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 24px;
+  /* background-color: var(--beige); */
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.sectionLabel {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  opacity: 0.8;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.fadeIn {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 20px auto;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.highlight {
+  background-color: transparent;
+  color: var(--black);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .fadeIn {
+    font-size: 1.05rem;
+  }
+}

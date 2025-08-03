@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar Widget</title>
+  <style>
+    :root {
+      --bg: #F5E6D3;
+      --card: #E77E28;
+      --accent: #D5DF26;
+      --text: #FFFFFF;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calendar-widget {
+      width: 160px;
+      height: 160px;
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 12px;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      color: var(--text);
+    }
+
+    .header {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    .calendar-icon {
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      -webkit-mask: url("https://cdn.simpleicons.org/googlecalendar/fff") no-repeat center;
+      mask: url("https://cdn.simpleicons.org/googlecalendar/fff") no-repeat center;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+    }
+
+    .events-scroll {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .events-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .event-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 4px 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .event-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .event-time {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 500;
+      margin-bottom: 1px;
+    }
+
+    .event-title {
+      color: #fff;
+      font-size: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .footer {
+      margin-top: 4px;
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .view-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .loading {
+      font-size: 11px;
+      color: #fff;
+      text-align: center;
+      padding-top: 8px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="calendar-widget">
+    <div class="header" onclick="scrollToSessions()">
+      <div class="calendar-icon"></div>
+      Upcoming 
+    </div>
+    <div class="events-scroll" id="events-scroll">
+      <div class="events-list" id="events-container">
+        <div class="loading">Loading...</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="view-link" onclick="scrollToSessions()">View All</span>
+    </div>
+  </div>
+
+  <script>
+    const CALENDAR_ID = 'gronsdodgeball@gmail.com';
+    const API_KEY = 'AIzaSyCAllpV5h0oZ0Pklsq4_CBjaCt-8HDhSuY';
+    const MAX_EVENTS = 10;
+
+    async function loadEvents() {
+      try {
+        const now = new Date().toISOString();
+        const response = await fetch(
+          `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&maxResults=${MAX_EVENTS}&orderBy=startTime&singleEvents=true`
+        );
+        if (!response.ok) throw new Error('API request failed');
+        const data = await response.json();
+        displayEvents(data.items);
+      } catch (error) {
+        console.error("Error:", error);
+        showError();
+      }
+    }
+
+    function displayEvents(events) {
+      const container = document.getElementById('events-container');
+      if (!events || events.length === 0) {
+        container.innerHTML = `<div class="event-item"><div class="event-title">No events</div></div>`;
+        return;
+      }
+
+      container.innerHTML = events.map(event => {
+        const start = event.start.dateTime || event.start.date;
+        const time = start ? formatTime(start) : 'All day';
+        return `
+          <div class="event-item" onclick="scrollToSessions()">
+            <div class="event-time">${time}</div>
+            <div class="event-title">${event.summary || 'Untitled'}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showError() {
+      document.getElementById('events-container').innerHTML = `<div class="event-item"><div class="event-title">Failed to load events</div></div>`;
+    }
+
+    function formatTime(dateString) {
+      const date = new Date(dateString);
+      const optionsDate = { weekday: 'short', day: '2-digit', month: 'short' };
+      const optionsTime = { hour: '2-digit', minute: '2-digit' };
+      return `${date.toLocaleDateString(undefined, optionsDate)} – ${date.toLocaleTimeString([], optionsTime)}`;
+    }
+
+    function scrollToSessions() {
+      const target = document.querySelector('#sessions');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadEvents);
+  </script>
+</body>
+</html>

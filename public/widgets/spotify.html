@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spotify Widget</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #E77E28;
+      --yellow: #D5DF26;
+      --white: #ffffff;
+      --text: #000000;
+      --beige: #F5E6D3;
+    }
+
+    body {
+      background: var(--beige);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .widget {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      background-color: var(--orange);
+      color: var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .widget-content {
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .widget:hover .widget-content {
+      opacity: 0;
+    }
+
+    .queue {
+      color: var(--yellow);
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .widget:hover .queue {
+      animation: zoomQueue 0.4s ease forwards;
+    }
+
+    @keyframes zoomQueue {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.65);
+      }
+    }
+
+    .spotify-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 18px;
+      height: 18px;
+      z-index: 2;
+      transition: opacity 0.2s ease;
+    }
+
+    .spotify-icon svg {
+      fill: var(--white);
+      width: 100%;
+      height: 100%;
+    }
+
+    .add-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.94);
+      background: var(--yellow);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .widget:hover .add-button {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .add-button:hover {
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+
+    .add-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+      );
+      transform: translateX(-100%);
+      animation: glare 3s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes glare {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="widget">
+    <div class="widget-content">
+      PICK A<br>
+      SONG. WE’LL<br>
+      <span class="queue">QUEUE</span> IT.
+    </div>
+
+    <div class="spotify-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+      </svg>
+    </div>
+
+    <a class="add-button" href="https://open.spotify.com/playlist/4qpZ71VrmebXC9b1BrGJP2?si=b13f93aba56f4c98&pt=c625563d231687147421d5050b05223d" target="_blank">
+      Add your song
+    </a>
+  </div>
+
+</body>
+</html>

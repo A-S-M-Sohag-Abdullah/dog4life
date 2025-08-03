@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Pacifico&family=Oswald&family=Playfair+Display&family=Dancing+Script&family=Josefin+Sans&family=Fira+Sans&family=PT+Serif&family=Karla&family=Quicksand&display=swap");
+
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/bebas-neue.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+   --beige: #f5e6d3;
+  --black: #0d0c0b;
+  --orange: #f57f3b;
+  --lime: #d5df26;
+  --text: #1a1a1a;
+  font-family: "Inter", sans-serif;
+}
+
+.font-bebas-neue {
+  font-family: "Bebas Neue", cursive;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #f5e6d3;
+}
+
+/* === LOADER === */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999999;
+  animation: slideUp 0.8s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+/* === LOGO WRAPPER === */
+.logo-wrapper {
+  animation: logoSlideUp 0.8s ease-in-out forwards;
+  position: absolute;
+  opacity: 0.5;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+/* === LOGO SVG === */
+.logo-loader {
+  width: 200px;
+  height: auto;
+}
+
+/* Animate each path to fill from bottom (white reveal) */
+.logo-loader path {
+  fill: orange; /* Final color */
+  clip-path: inset(100% 0 0 0); /* Start hidden from bottom */
+  animation: fillUp 1s ease-in-out 1s forwards;
+}
+
+/* Optional: stagger effect if multiple paths */
+
+/* Add more nth-child selectors if needed */
+
+/* === KEYFRAMES === */
+@keyframes fillUp {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes logoSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+}
+
+/* === SCROLLBAR === */
+/* Hide scrollbar for Chrome, Safari, Opera */
+.marqueeInner::-webkit-scrollbar {
+  display: none;
+}

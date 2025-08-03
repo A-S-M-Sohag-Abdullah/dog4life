@@ -1,0 +1,280 @@
+
+.wrapper {
+  /* background: #f1eee7; */
+  color: #0d0c0b;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  padding: 4rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 1000;
+  position: relative;
+}
+
+.section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: var(--beige); */
+  color: var(--black);
+  font-family: "Inter", sans-serif;
+  z-index: -999999;
+}
+
+.content {
+  display: flex;
+  max-width: 1200px;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.imageBox {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  border-radius: 36px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo,
+.ampersand,
+.cta {
+  position: absolute;
+}
+
+.photo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ampersand {
+  top: 20px;
+  right: 20px;
+  font-size: 64px;
+  color: var(--lime);
+  font-weight: bold;
+}
+
+.cta {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lime);
+  color: var(--black);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.cta:hover {
+  background-color: #ffffff;
+}
+
+.formWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0eee7;
+  position: relative;
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="date"] {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  transition: all 0.2s ease;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: var(--lime);
+  box-shadow: 0 0 0 2px rgba(213, 223, 38, 0.3);
+}
+
+.participantBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 6px 10px;
+  max-width: 180px;
+  height: 48px;
+}
+
+.participantBox button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #444;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.participantBox button:hover {
+  color: var(--lime);
+}
+
+.participantBox input {
+  width: 60px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  background: none;
+}
+
+.preferredTimeInput {
+  border: 0 !important;
+}
+
+.formInline {
+  display: flex;
+  gap: 12px;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  background: var(--lime);
+  color: var(--black);
+  padding: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #cdd618;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--black);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 480px;
+}
+
+.step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.stepCircle {
+  width: 56px;
+  height: 56px;
+  background: var(--lime);
+  color: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.stepContent h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stepContent p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.formSuccess {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 20px;
+  color: green;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .imageBox {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+}

@@ -1,0 +1,44 @@
+// // tailwind.config.js
+// /** @type {import('tailwindcss').Config} */
+// module.exports = {
+//   content: {
+//     files: ['./app/**/*.{js,jsx}', './components/**/*.{js,jsx}', './pages/**/*.{js,jsx}'],
+//     safelist: [
+//       {
+//         pattern: /col-span-(3|6|12)/,
+//       },
+//       {
+//         pattern: /row-span-(3|6)/,
+//       },
+//     ],
+//   },
+//   theme: {
+//     extend: {
+//       gridTemplateColumns: {
+//         12: 'repeat(12, minmax(0, 1fr))',
+//       },
+//     },
+//   },
+//   plugins: [],
+// };
+
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        // This enables font-bebas-neue as a utility class in Tailwind
+        "bebas-neue": ['"Bebas Neue"', "cursive"], // second argument is fallback
+        "inter": ['"Inter"', "sans-serif"],
+        "pacifico": ['"Pacifico"', "cursive"],
+        "oswald": ['"Oswald"', "sans-serif"],
+        "playfair": ['"Playfair Display"', "serif"],
+        "dancing": ['"Dancing Script"', "cursive"],
+        "josefin": ['"Josefin Sans"', "sans-serif"],
+        "pt-serif": ['"PT Serif"', "serif"],
+        "quicksand": ['"Quicksand"', "sans-serif"],
+        "karla": ['"Karla"', "sans-serif"],
+      },
+    },
+  },
+  // Add any other config as you need
+};
