@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../styles/FundsAccessibility.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -154,7 +155,13 @@ export default function FundsAccessibility() {
           />
         </svg>
       </div> */}
-
+      <Image
+        src="/assets/bg/review3.svg"
+        alt="Hero Background"
+        width={20}
+        height={20}
+        className="absolute bottom-[30px] right-[5%] size-45 xl:block hidden"
+      />
       <div className={`${styles.container}  relative z-50`}>
         <div className={styles.sectionTitle} ref={titleRef}>
           Funds & Accessibility

@@ -20,6 +20,7 @@ import NavBar from "@/components/NavBar";
 import Preloader from "./loader";
 import ScrollToTop from "../components/ScrollToTop";
 import ScrollHint from "@/components/scrollIndicator";
+import Image from "next/image";
 
 export default function HomePage() {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -302,9 +303,15 @@ export default function HomePage() {
         />
 
         {/* hero section */}
-        <div ref={heroRef} className="">
+        <div ref={heroRef} className="relative">
           <NavBar />
-
+          <Image
+            src="/assets/bg/letsplaydodgeball.svg"
+            alt="Hero Background"
+            width={20}
+            height={20}
+            className="absolute top-[10%] right-[15%] size-50 xl:block hidden"
+          />
           {/* Updated Widget Grid */}
           <div className="grid grid-cols-20 relative z-50 gap-4 grid-flow-dense auto-rows-[72px] mx-auto md:mt-40 mb-40 max-w-[336px] md:max-w-[864px] ">
             {widgets.slice(0, visibleCount).map((w, i) => (
@@ -321,6 +328,14 @@ export default function HomePage() {
               <div ref={loadMoreRef} className="col-span-12 h-1" />
             )}
           </div>
+
+          <Image
+            src="/assets/bg/checkschedule.svg"
+            alt="Hero Background"
+            width={20}
+            height={20}
+            className="absolute bottom-[50px] 2xl:left-[15%] xl:left-[60px]  size-50 xl:block hidden"
+          />
 
           <ScrollHint />
         </div>

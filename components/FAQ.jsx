@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/FAQ.module.css";
 import FAQItem from "./FAQItem";
+import Image from "next/image";
 
 const initialFaqs = [
   {
@@ -178,7 +179,13 @@ export default function FaqPage() {
   return (
     <div className={`relative ${styles.faq}`}>
       {/* Decorative Top Curve */}
-
+      <Image
+        src="/assets/bg/questions.svg"
+        alt="Hero Background"
+        width={20}
+        height={20}
+        className="absolute top-[20%] left-[18%] size-40 xl:block hidden"
+      />
       <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[7px] z-[70] left-0 w-full">
         <svg
           viewBox="0 0 1440 14"

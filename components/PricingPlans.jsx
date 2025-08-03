@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../styles/PricingPlans.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,7 +122,21 @@ export default function PricingPlans() {
           />
         </svg>
       </div> */}
+      <Image
+        src="/assets/bg/review 1.svg"
+        alt="Hero Background"
+        width={20}
+        height={20}
+        className="absolute top-[30px] right-[10%] size-45 xl:block hidden"
+      />
 
+       <Image
+        src="/assets/bg/review 2.svg"
+        alt="Hero Background"
+        width={20}
+        height={20}
+        className="absolute bottom-[-40px] left-[10%] size-35 xl:block hidden"
+      />
       <div
         className={`${styles.pricingPlan}  relative z-50`}
         ref={containerRef}

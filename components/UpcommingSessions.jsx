@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "../styles/UpcommingSessions.module.css";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -178,15 +179,24 @@ const UpcomingSessions = () => {
   }, [sessions]);
 
   return (
-    <main className={`${styles.upcomming} ${styles.main}`}>
+    <main className={`${styles.upcomming} ${styles.main} relative`}>
       <div className={`${styles.sectionTitle}  relative z-50`}>
         UPCOMING SESSIONS
       </div>
+      <Image
+          src="/assets/bg/claimspot.svg"
+          alt="Hero Background"
+          width={20}
+          height={20}
+          className="absolute top-[10%] left-[10%] size-40 xl:block hidden"
+        />
       <p className={`${styles.subtitle}  relative z-50`}>
         Swipe or scroll through upcoming games
       </p>
 
       <div className={`${styles.timelineWrapper}  relative z-50`}>
+        
+
         <section
           ref={timelineRef}
           className={styles.timeline}
