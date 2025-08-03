@@ -641,7 +641,7 @@ const NavBar = () => {
                                 closeMenu();
                               }
                             }}
-                            className="text-5xl hover:pl-6 transition-all duration-600 leading-none xl:text-[85px] sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit"
+                            className=" hover:pl-6 transition-all duration-600 leading-none xl:text-[85px] sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit"
                           >
                             {moreLink.label}
                             <div
