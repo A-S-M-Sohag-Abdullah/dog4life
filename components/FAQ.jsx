@@ -184,7 +184,7 @@ export default function FaqPage() {
         alt="Hero Background"
         width={20}
         height={20}
-        className="absolute top-[20%] left-[18%] size-40 xl:block hidden"
+        className="absolute top-[20%] 2xl:left-[25%] left-[15%] size-40 xl:block hidden"
       />
       <div className="absolute -top-[2px] sm:-top-[4px] md:-top-[7px] z-[70] left-0 w-full">
         <svg
