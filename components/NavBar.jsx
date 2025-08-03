@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import logo from "../public/assets/logo.svg"; // Adjust the path as needed
@@ -318,6 +318,25 @@ const NavBar = () => {
     }
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => setIsDesktop(window.innerWidth >= 1024);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  const toggleDropdown = () => {
+    if (!isDesktop) setIsOpen((prev) => !prev);
+  };
+
+  const closeDropdown = () => {
+    if (!isDesktop) setIsOpen(false);
+  };
+
   return (
     <>
       {/* Trigger */}
@@ -342,10 +361,17 @@ const NavBar = () => {
             <button
               className="flex items-center gap-1 px-4 py-2 rounded-full transition text-white font-semibold"
               type="button"
+              onClick={toggleDropdown}
             >
               Help
               <svg
-                className="w-4 h-4 ml-1 transition-transform duration-200 transform group-hover:rotate-0 rotate-180"
+                className={`w-4 h-4 ml-1 transition-transform duration-200 transform ${
+                  isDesktop
+                    ? "group-hover:rotate-0 rotate-180"
+                    : isOpen
+                    ? "rotate-0"
+                    : "rotate-180"
+                }`}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -359,34 +385,51 @@ const NavBar = () => {
               </svg>
             </button>
 
-            <div className="absolute top-6 right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200 overflow-hidden">
+            <div
+              className={`absolute top-6 right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 overflow-hidden transition-opacity duration-200 
+          ${
+            isDesktop
+              ? "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+              : ""
+          } 
+          ${
+            isOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+            >
               <a
                 href="mailto:hello@hello.com"
                 className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                onClick={closeDropdown}
               >
                 Email Us
               </a>
               <Link
                 href="/#faq"
                 className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                onClick={closeDropdown}
               >
                 FAQs
               </Link>
               <Link
                 href="/terms"
                 className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                onClick={closeDropdown}
               >
                 Terms
               </Link>
               <Link
                 href="/rules"
                 className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                onClick={closeDropdown}
               >
                 Rules
               </Link>
               <Link
                 href="/privacy"
                 className="block px-4 py-2 text-black hover:text-[#e77e28]"
+                onClick={closeDropdown}
               >
                 Privacy
               </Link>
@@ -468,7 +511,7 @@ const NavBar = () => {
                       <a
                         href={link.href}
                         ref={(el) => (linkRefs.current[index] = el)}
-                        className={`text-5xl hover:pl-6 transition-all duration-600 leading-none sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit xl:text-[85px]`}
+                        className={`text-xl hover:pl-6 transition-all duration-600 leading-none sm:text-3xl lg:text-5xl font-bebas-neue font-bold block w-fit xl:text-[85px]`}
                       >
                         {link.label}
                         <div

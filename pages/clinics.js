@@ -118,8 +118,10 @@ const Clinics = () => {
         <div className={styles.wrapper}>
           <section className={styles.section}>
             <div className={styles.content}>
-              <div className={styles.imageBox}>
-                
+              <div
+                className={`${styles.imageBox}`}
+                style={!showForm ? { aspectRatio: "4 / 3" } : {}}
+              >
                 {!showForm && (
                   <>
                     <img
@@ -136,6 +138,7 @@ const Clinics = () => {
                     </button>
                   </>
                 )}
+
                 {showForm && (
                   <div className={styles.formWrapper}>
                     <button className={styles.closeBtn} onClick={resetAll}>
@@ -192,7 +195,7 @@ const Clinics = () => {
                           />
                         </div>
 
-                        <div className={styles.formInline}>
+                        <div className={`${styles.formInline} flex-wrap`}>
                           <div className={styles.formGroup}>
                             <label htmlFor="date">Preferred date</label>
                             <input
@@ -205,7 +208,7 @@ const Clinics = () => {
                           </div>
                           <div className={styles.formGroup}>
                             <label htmlFor="time">Preferred time</label>
-                            <div className={styles.participantBox}>
+                            <div className={`${styles.participantBox} `}>
                               <button type="button" onClick={decTime}>
                                 −
                               </button>
